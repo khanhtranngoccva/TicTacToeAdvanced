@@ -36,6 +36,19 @@ h1 {
 
 .gameContainer {
     width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    row-gap: 1rem;
+}
+
+.newGame {
+    background: white;
+    font-size: 1rem;
+    border-radius: 1em;
+    border: none;
+    cursor: pointer;
+    padding: 0.75em;
 }
 
 .gameBoard {
@@ -59,6 +72,7 @@ h1 {
     border: 1px solid #00000022;
     font-size: 1.2em;
     /*max-width: 2em;*/
+    cursor: pointer;
 }
 
 @media only all and (min-width: 400px) {

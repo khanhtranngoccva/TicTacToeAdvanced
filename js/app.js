@@ -14,6 +14,7 @@ function Board(rowCount = 3, columnCount = 3, winCondition = 3) {
     if (!new.target) {
         return new Board(rowCount, columnCount, winCondition);
     }
+    
     if (rowCount < winCondition || columnCount < winCondition) {
         throw new Error("The board is too small for the win condition.");
     }
@@ -101,6 +102,11 @@ function Board(rowCount = 3, columnCount = 3, winCondition = 3) {
     renderElement.style.gridTemplateColumns = `repeat(${columnCount}, 1fr)`;
     renderElement.style.maxWidth = (3 * columnCount) + "em";
 
+    const newGameButton = document.createElement("button");
+    newGameButton.innerText = "New game";
+    newGameButton.addEventListener("click", ()=>this.newGame());
+    newGameButton.classList.add("newGame");
+    
     this.render = function (parentNode) {
         renderElement.innerHTML = null;
         const fragment = document.createDocumentFragment();
@@ -111,7 +117,16 @@ function Board(rowCount = 3, columnCount = 3, winCondition = 3) {
         });
         renderElement.append(fragment);
         parentNode.append(renderElement);
+        parentNode.append(newGameButton);
     };
+    
+    
+    
+    this.newGame = function() {
+        lockdown = 0;
+        currentPlayer = "X";
+        tiles.forEach(row=>row.forEach(tile=>tile.value=EMPTY_TILE_TOKEN));
+    }
 }
 
 const board = new Board(10, 10, 5);
