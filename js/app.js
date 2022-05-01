@@ -91,7 +91,7 @@ function Board(rowCount = 3, columnCount = 3, winCondition = 3) {
         if ([...rows, ...columns, ...diagonals].some(checkLine)) {
             lockdown = 1;
         } else if (tiles.every(row => row.every(tile => tile.value !== EMPTY_TILE_TOKEN))) {
-            alert("It's a tie!");
+            setTimeout(() => {alert("It's a tie!");}, 100);
             lockdown = 1;
         }
     }
